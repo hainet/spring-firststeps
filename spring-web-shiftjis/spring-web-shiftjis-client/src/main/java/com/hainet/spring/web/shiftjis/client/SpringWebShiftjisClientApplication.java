@@ -22,12 +22,9 @@ public class SpringWebShiftjisClientApplication {
     }
 
     public static void main(String[] args) {
-        final ConfigurableApplicationContext context = SpringApplication.run(SpringWebShiftjisClientApplication.class, args);
-
-        final SpringWebShiftjisClientApplication app = context.getBean(SpringWebShiftjisClientApplication.class);
-        app.post();
-
-        context.close();
+        try (ConfigurableApplicationContext context = SpringApplication.run(SpringWebShiftjisClientApplication.class, args)) {
+            context.getBean(SpringWebShiftjisClientApplication.class).post();
+        }
     }
 
     public void post() {
