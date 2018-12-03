@@ -17,8 +17,12 @@ CollectionUtils.findValueOfType(
 ).setDefaultCharset(Charset.forName("shift_jis"));
 ```
 
-### HTTPリクエスト/レスポンスを出力する。
-`--debug`オプションを付与して起動することで`RestTemplate`の`DEBUG`ログからHTTPリクエスト/レスポンスの内容を見ることができる。
+### HTTPリクエスト/レスポンス情報を出力する。
+```yml
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+```
 
 ## Spting Web `Shift_JIS` Server
 
