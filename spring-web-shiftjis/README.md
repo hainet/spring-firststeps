@@ -41,10 +41,10 @@ logging:
 - `CharacterEncodingFilter`
 - `HttpProperties`
 ```yml
-spring:
-  http:
+server:
+  servlet:
     encoding:
-      charset: shift_jis
+      charset: Shift_JIS
 ```
 
 ### `Shift_JIS` でレスポンスを送信する。
