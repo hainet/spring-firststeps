@@ -11,10 +11,19 @@ headers.setContentType(new MediaType(MediaType.APPLICATION_FORM_URLENCODED, Char
 
 ### `Shift_JIS`でレスポンスを受信する。
 ```java
-CollectionUtils.findValueOfType(
-        restTemplate.getMessageConverters(),
-        StringHttpMessageConverter.class
-).setDefaultCharset(Charset.forName("shift_jis"));
+@Bean
+public CommandLineRunner configureDefaultCharset(final List<HttpMessageConverter<?>> converters) {
+    return args -> {
+        final StringHttpMessageConverter converter = CollectionUtils.findValueOfType(
+                converters,
+                StringHttpMessageConverter.class
+        );
+
+        if (converter != null) {
+            converter.setDefaultCharset(Charset.forName("Shift-JIS"));
+        }
+    };
+}
 ```
 
 ### HTTPリクエスト/レスポンス情報を出力する。
@@ -41,4 +50,22 @@ spring:
 ### `Shift_JIS`でレスポンスを送信する。
 ```java
 @PostMapping(value = "", produces = "text/plain;charset=shift_jis")
+```
+
+または
+
+```java
+@Bean
+public CommandLineRunner configureDefaultCharset(final List<HttpMessageConverter<?>> converters) {
+    return args -> {
+        final StringHttpMessageConverter converter = CollectionUtils.findValueOfType(
+                converters,
+                StringHttpMessageConverter.class
+        );
+
+        if (converter != null) {
+            converter.setDefaultCharset(Charset.forName("Shift-JIS"));
+        }
+    };
+}
 ```
