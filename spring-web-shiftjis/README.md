@@ -2,14 +2,14 @@
 
 ## Spting Web `Shift_JIS` Client
 
-### `Shift_JIS`でリクエストを送信する。
+### `Shift_JIS` でリクエストを送信する。
 コンテントタイプの設定で、必ず文字コードを指定すること。
 ```java
 HttpHeaders headers = new HttpHeaders();
 headers.setContentType(new MediaType(MediaType.APPLICATION_FORM_URLENCODED, Charset.forName("shift_jis")));
 ```
 
-### `Shift_JIS`でレスポンスを受信する。
+### `Shift_JIS` でレスポンスを受信する。
 ```java
 @Bean
 public CommandLineRunner configureDefaultCharset(final List<HttpMessageConverter<?>> converters) {
@@ -35,7 +35,7 @@ logging:
 
 ## Spting Web `Shift_JIS` Server
 
-### `Shift_JIS`でリクエストを受信する。
+### `Shift_JIS` でリクエストを受信する。
 #### Hints
 - `HttpEncodingAutoConfiguration`
 - `CharacterEncodingFilter`
@@ -47,7 +47,7 @@ spring:
       charset: shift_jis
 ```
 
-### `Shift_JIS`でレスポンスを送信する。
+### `Shift_JIS` でレスポンスを送信する。
 ```java
 @PostMapping(value = "", produces = "text/plain;charset=shift_jis")
 ```
